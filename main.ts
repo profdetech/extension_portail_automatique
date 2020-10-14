@@ -1,4 +1,4 @@
-//% weight=12 color=#00aced icon="\uf1b9"
+//% weight=100 color=#00aced icon="\uf1b9"
 namespace profdetech_portail{
 
 	
