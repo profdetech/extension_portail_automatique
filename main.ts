@@ -1,5 +1,5 @@
 //% weight=1000 color=#00aced icon="\uf1b9"
-namespace profdetech_portail{
+namespace portail_moteur{
 
 	
 	/**
@@ -52,6 +52,11 @@ namespace profdetech_portail{
 		pins.digitalWritePin(DigitalPin.P14, 0)
     }
 
+
+}
+
+//% weight=999 color=#00aced icon="\uf1b9"
+namespace portail_moteur{
 	/**
      * allumer le gyrophare (branché sur P12)
      */
@@ -137,4 +142,7 @@ namespace profdetech_portail{
             return true;
         } else return false;
 }
-}
+
+
+
+    }
