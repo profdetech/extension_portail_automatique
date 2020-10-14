@@ -56,8 +56,8 @@ namespace portail_moteur{
 }
 
 //% weight=999 color=#00aced icon="\uf1b9"
-namespace portail_moteur{
-	/**
+namespace portail_actionneurs{
+/**
      * allumer le gyrophare (branché sur P12)
      */
     //% blockId=allum_gyro
@@ -76,6 +76,12 @@ namespace portail_moteur{
     export function eteindre_gyro(): void {
         pins.digitalWritePin(DigitalPin.P12, 0)
     }
+
+}
+
+//% weight=998 color=#00aced icon="\uf1b9"
+namespace portail_capteurs{
+	
 	
 	/**
      * Etat du fin de course ouvert sur P1
