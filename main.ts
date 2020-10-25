@@ -46,11 +46,10 @@
 	Touche_8 = 0x52,
 	Touche_9 = 0x4A,
     }
-//% weight=1000 color=#00aced icon="\uf1b9"
-namespace portail_chaîne_d_energie{
 
-	
-	/**
+//% weight=1001 color=#00aced icon="\uf128"
+namespace portail_description{
+/**
 	 * P0 = haut parleur --
 	 * P14 = Moteur du portail --
 	 * P1 = Fin de course ouvert --
@@ -66,11 +65,14 @@ namespace portail_chaîne_d_energie{
 	//% weight=99 blockGap=24
     export function portail_descriptif(): void {
     }
-	
-	
+}
+
+
+//% weight=1000 color=#00aced icon="\uf1b9"
+namespace portail_chaîne_d_energie{
 	
 	/**
-     * ouvrir le portail (moteur sur P14)
+     * Ouvrir le portail (moteur sur P14)
      */
     //% blockId=portail_ouvrir
     //% block="Ouvrir le portail"
@@ -80,7 +82,7 @@ namespace portail_chaîne_d_energie{
     }
 
     /**
-     * fermer le portail (moteur sur P14)
+     * Fermer le portail (moteur sur P14)
      */
     //% blockId=portail_fermer
     //% block="Fermer le portail"
@@ -90,7 +92,7 @@ namespace portail_chaîne_d_energie{
     }
 	
 	/**
-     * arrêter le portail (moteur sur P14)
+     * Arrêter le portail (moteur sur P14)
      */
     //% blockId=portail_arreter
     //% block="Arreter le portail"
@@ -106,7 +108,7 @@ namespace portail_chaîne_d_energie{
 //% weight=999 color=#00aced icon="\uf0eb"
 namespace portail_communiquer{
 /**
-     * allumer le gyrophare (branché sur P12)
+     * Allumer le gyrophare (branché sur P12)
      */
     //% blockId=allum_gyro
     //% block="Allumer le gyrophare"
@@ -116,13 +118,33 @@ namespace portail_communiquer{
     }
 	
 	/**
-     * éteindre le gyrophare (branché sur P12)
+     * Eteindre le gyrophare (branché sur P12)
      */
     //% blockId=etein_gyro
     //% block="Eteindre le gyrophare"
-	//% weight=84 blockGap=24
+	//% weight=84 blockGap=48
     export function eteindre_gyro(): void {
         pins.digitalWritePin(DigitalPin.P12, 0)
+    }
+
+/**
+     * Faire sonner le buzzer  (branché sur P0)
+     */
+    //% blockId=allum_hp
+    //% block="Faire sonner le buzzer"
+	//% weight=83 blockGap=8
+    export function allumer_hp(): void {
+        pins.digitalWritePin(DigitalPin.P0, 0)
+    }
+
+/**
+     * Arreter la sonnerie du buzzer (branché sur P0)
+     */
+    //% blockId=etein_hp
+    //% block="Arreter la sonnerie du buzzer"
+	//% weight=82 blockGap=24 color=#00acff
+    export function eteindre_hp(): void {
+        pins.digitalWritePin(DigitalPin.P0, 1)
     }
 
 }
@@ -142,7 +164,7 @@ namespace portail_acquérir{
     }
 	
 	/**
-     * renvoie vrai si le portail est ouvert en entier (FCO sur	 P1)
+     * Renvoie vrai si le portail est ouvert en entier (FCO sur	 P1)
      */
     //% blockId=PO_entier
     //% block="Le portail est ouvert en entier (vrai ou faux)"
@@ -164,7 +186,7 @@ namespace portail_acquérir{
     }
 	
 	/**
-     * renvoie vrai si le portail est fermé est entier (FCF sur P15)
+     * Renvoie vrai si le portail est fermé est entier (FCF sur P15)
      */
     //% blockId=PF_entier
     //% block="Le portail est fermé en entier (vrai ou faux)"
@@ -186,7 +208,7 @@ namespace portail_acquérir{
     }
 	
 	/**
-     * renvoie vrai si la barriere infra rouge est coupé (sur P8)
+     * Renvoie vrai si la barriere infra rouge est coupé (sur P8)
      */
     //% blockId=bar_inf_vrai
     //% block="La barriere infrarouge est coupé (vrai ou faux)"
