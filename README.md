@@ -23,7 +23,18 @@ Ce dépôt peut être ajouté en tant qu'**extension** dans MakeCode.
 Cette section montre le code des blocs du dernier commit dans la branche master.
 Cette image peut prendre quelques minutes pour être actualisée.
 
+
+```blocks
+input.onButtonPressed(Button.A, function () {
+    portail.ouvrir_portail()
+})
+```
+
+
+
 ![Un rendu de la vue des blocs](https://github.com/profdetech/portail_automatique/raw/master/.github/makecode/blocks.png)
+
+
 
 #### Métadonnées (utilisées pour la recherche, le rendu)
 
