@@ -47,9 +47,12 @@
 	Touche_9 = 0x4A,
     }
 
-//% weight=1001 color=#00aced icon="\uf128"
-namespace portail_description{
-/**
+
+
+
+//% weight=1000 color=#00aced icon="\uf1b9"
+namespace portail{
+	/**
 	 * P0 = haut parleur --
 	 * P14 = Moteur du portail --
 	 * P1 = Fin de course ouvert --
@@ -63,20 +66,19 @@ namespace portail_description{
     //% blockId=portail_descriptif
     //% block="Descriptif branchement portail"
 	//% weight=99 blockGap=24
+    //% group="Descriptif du branchement du portail en commentaire du bloc ci-dessous"
     export function portail_descriptif(): void {
     }
-}
 
 
-//% weight=1000 color=#00aced icon="\uf1b9"
-namespace portail_chaîne_d_energie{
-	
+
 	/**
      * Ouvrir le portail (moteur sur P14)
      */
     //% blockId=portail_ouvrir
     //% block="Ouvrir le portail"
-	//% weight=95 blockGap=8
+	//% weight=95 blockGap=2
+    //% group="Chaîne d'énergie - distribuer l'énergie"
     export function ouvrir_portail(): void {
         pins.servoWritePin(AnalogPin.P14, 0);
     }
@@ -86,7 +88,8 @@ namespace portail_chaîne_d_energie{
      */
     //% blockId=portail_fermer
     //% block="Fermer le portail"
-	//% weight=94 blockGap=8
+	//% weight=94 blockGap=2
+    //% group="Chaîne d'énergie - distribuer l'énergie"
     export function fermer_portail(): void {
         pins.servoWritePin(AnalogPin.P14, 180);
     }
@@ -96,23 +99,19 @@ namespace portail_chaîne_d_energie{
      */
     //% blockId=portail_arreter
     //% block="Arreter le portail"
-	//% weight=93 blockGap=24
+	//% weight=93 blockGap=16
     export function arreter_portail(): void {
         //pins.servoWritePin(AnalogPin.P14, 90);
 		pins.digitalWritePin(DigitalPin.P14, 0)
     }
 
-
-}
-
-//% weight=999 color=#00aced icon="\uf0eb"
-namespace portail_communiquer{
 /**
      * Allumer le gyrophare (branché sur P12)
      */
     //% blockId=allum_gyro
     //% block="Allumer le gyrophare"
-	//% weight=85 blockGap=8
+	//% weight=85 blockGap=2
+    //% group="Chaîne d'information - communiquer"
     export function allumer_gyro(): void {
         pins.digitalWritePin(DigitalPin.P12, 1)
     }
@@ -122,7 +121,8 @@ namespace portail_communiquer{
      */
     //% blockId=etein_gyro
     //% block="Eteindre le gyrophare"
-	//% weight=84 blockGap=48
+	//% weight=84 blockGap=12
+    //% group="Chaîne d'information - communiquer"
     export function eteindre_gyro(): void {
         pins.digitalWritePin(DigitalPin.P12, 0)
     }
@@ -132,7 +132,8 @@ namespace portail_communiquer{
      */
     //% blockId=allum_hp
     //% block="Faire sonner le buzzer"
-	//% weight=83 blockGap=8
+	//% weight=83 blockGap=2
+    //% group="Chaîne d'information - communiquer"
     export function allumer_hp(): void {
         pins.digitalWritePin(DigitalPin.P0, 0)
     }
@@ -142,23 +143,20 @@ namespace portail_communiquer{
      */
     //% blockId=etein_hp
     //% block="Arreter la sonnerie du buzzer"
-	//% weight=82 blockGap=24 color=#00acff
+	//% weight=82 blockGap=12 color=#00acff
+    //% group="Chaîne d'information - communiquer"
     export function eteindre_hp(): void {
         pins.digitalWritePin(DigitalPin.P0, 1)
     }
 
-}
-
-//% weight=998 color=#00aced icon="\uf2ca"
-namespace portail_acquérir{
-	
 	
 	/**
      * Etat du fin de course ouvert sur P1
      */
     //% blockId=FCO
     //% block="Etat fin de course ouvert (0 ou 1)"
-	//% weight=78 blockGap=8
+	//% weight=78 blockGap=2
+    //% group="Chaîne d'information - acquérir"
     export function FCO(): number {
 		return pins.digitalReadPin(DigitalPin.P1);
     }
@@ -168,7 +166,8 @@ namespace portail_acquérir{
      */
     //% blockId=PO_entier
     //% block="Le portail est ouvert en entier (vrai ou faux)"
-	//% weight=77 blockGap=24
+	//% weight=77 blockGap=12
+    //% group="Chaîne d'information - acquérir"
     export function portail_ouvert(): boolean {
 		 if (pins.digitalReadPin(DigitalPin.P1) == 1) {
             return true;
@@ -180,7 +179,8 @@ namespace portail_acquérir{
      */
     //% blockId=FCF
     //% block="Etat fin de course fermé (0 ou 1)"
-	//% weight=76 blockGap=8
+	//% weight=76 blockGap=2
+    //% group="Chaîne d'information - acquérir"
     export function FCF(): number {
 		return pins.digitalReadPin(DigitalPin.P15);
     }
@@ -190,7 +190,8 @@ namespace portail_acquérir{
      */
     //% blockId=PF_entier
     //% block="Le portail est fermé en entier (vrai ou faux)"
-	//% weight=75 blockGap=24
+	//% weight=75 blockGap=12
+    //% group="Chaîne d'information - acquérir"
     export function portail_ferme(): boolean {
 		if (pins.digitalReadPin(DigitalPin.P15) == 1) {
             return true;
@@ -202,7 +203,8 @@ namespace portail_acquérir{
      */
     //% blockId=bar_inf
     //% block="Etat de la barriere infrarouge (0 ou 1)"
-	//% weight=74 blockGap=8
+	//% weight=74 blockGap=2
+    //% group="Chaîne d'information - acquérir"
     export function etat_barriere(): number {
 		return pins.digitalReadPin(DigitalPin.P8);
     }
@@ -212,7 +214,8 @@ namespace portail_acquérir{
      */
     //% blockId=bar_inf_vrai
     //% block="La barriere infrarouge est coupé (vrai ou faux)"
-	//% weight=73 blockGap=24
+	//% weight=73 blockGap=12
+    //% group="Chaîne d'information - acquérir"
     export function barriere_coupe(): boolean {
 		if (pins.digitalReadPin(DigitalPin.P8) == 1) {
             return true;
