@@ -223,18 +223,22 @@ namespace portail{
 }
 
 /**
-     * Lorsque le bouton de la telecommande du robot mbot est appué. Attention à initialiser le port du recepteur infrarouge.
+     * Lorsque le bouton de la telecommande du robot mbot est appuyé. Attention à initialiser le port du recepteur infrarouge.
      */
     //% blockId=ir_received_left_event
     //% block="Lorsque le signal du bouton |%btn| de la télécommande est reçu" shim=IR::onPressEvent
-   // function onPressEvent(btn: RemoteButton, body: () => void): void;
+    //% weight=73 blockGap=12
+    //% group="Chaîne d'information - acquérir - IHM"
+   function onPressEvent(btn: RemoteButton, body: () => void): void;
 
     /**
      * initialisation du port du recepteur infrarouge. A mettre au début du programme.
      */
     //% blockId=ir_init
     //% block="Initialisation de la connexion du capteur infrarouge sur le port %pin" shim=IR::init
-    //function init(pin: Pins): void;
+    //% weight=73 blockGap=12
+    //% group="Chaîne d'information - acquérir - IHM"
+    function init(pin: Pins): void;
 
     }
 
